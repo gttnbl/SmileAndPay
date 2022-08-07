@@ -1,6 +1,6 @@
 # SmileAndPay
 
-######################## info projet ###############  <br/> tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour developper le SOAP(je partirai en vacances)
+######################## info projet ###############  <br/> tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour developper le SOAP(arret maladie ensuite vacancs)
 
 
 
