@@ -1,9 +1,10 @@
 # SmileAndPay
 
-######################## info projet ###############
-tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour developper le SOAP(je partirai en vacances)
+######################## info projet ###############  <br/> tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour developper le SOAP(je partirai en vacances)
 
-################################################### DATABASE ###################################################
+
+
+######################### DATABASE ####################### <br/>
 1) Dans spring-servlet.xml vous trouverez la config BD 
 		
 		url: jdbc:postgresql://localhost:5432/SandP
@@ -11,7 +12,7 @@ tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour d
 		password" value="admin" 
 2) script.sql sous src/main/resources contient la structure des tables (meme si vous le lancez pas ,Hibernate fait le job ;) )
 
-################################################### ENDPOINT ###################################################
+############################ ENDPOINT ########################### <br/>
 
 1) MarchantController
 
@@ -35,11 +36,11 @@ tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour d
 	  ==> si on fait deleteMarchant à un marchant qui est attché à un product la suppression ne se fait pas car ce marchant est attaché à un product dans la table marchant_product
 
 
-########################################################### Test ####################################################
+################################## Test ########################## <br/>
 des Unit tests sont implementés avec une couverture qui dépasse 90%
 vous trouvez en PJ un projet postman avec les differents test des endpoints (src/main/resources) :SmileAndPay.postman_collection.json
 
 
-#####################################github repository##########################################
+#####################################github repository########################################## <br/>
 
 https://github.com/gttnbl/SmileAndPay.git
