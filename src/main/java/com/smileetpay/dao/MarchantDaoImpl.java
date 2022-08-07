@@ -25,9 +25,15 @@ public class MarchantDaoImpl implements MarchantDao {
 	@Override
 	public Boolean update(Marchant marchant) {
 		// TODO Auto-generated method stub
+		Boolean rst = Boolean.TRUE;
 		Session session = this.sessionFactory.getCurrentSession();
-		session.update(marchant);
-		return Boolean.TRUE;
+		 try {
+			session.update(marchant);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			rst =Boolean.FALSE;
+		}
+		return rst;
 	}
 
 	@Override
@@ -41,20 +47,31 @@ public class MarchantDaoImpl implements MarchantDao {
 	@Override
 	public Boolean create(Marchant marchant) {
 		// TODO Auto-generated method stub
+		Boolean rst = Boolean.TRUE;
 		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(marchant);
-		return Boolean.TRUE;
+		 try {
+			session.persist(marchant);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			rst =Boolean.FALSE;
+		}
+		return rst;
 	}
 
 	@Override
 	public Boolean deleteMarchant(int id) {
 		// TODO Auto-generated method stub
+		Boolean rst = Boolean.TRUE;
 		Session session = this.sessionFactory.getCurrentSession();
-		Marchant p = (Marchant) session.load(Marchant.class, new Integer(id));
-		if (null != p) {
+		Marchant p = (Marchant) session.get(Marchant.class, new Integer(id));
+
+		if (p == null) {
+			rst = Boolean.FALSE;
+
+		} else {
 			session.delete(p);
 		}
-		return Boolean.TRUE;
+		return rst;
 	}
 
 	@Override

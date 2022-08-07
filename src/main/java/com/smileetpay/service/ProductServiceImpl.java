@@ -16,39 +16,29 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDao productDao;
 
 	@Override
-	public void save(Product product) {
-		// TODO Auto-generated method stub
-		productDao.create(product);
-	}
-
-	@Override
-	public List<Product> list() {
-		// TODO Auto-generated method stub
-		return productDao.getAllProducts();
-	}
-
-	@Override
 	public Product getProductById(int id) {
 		// TODO Auto-generated method stub
-		return productDao.getProductById(id);
+		 Product rst =  productDao.getProductById(id);
+		 return rst ;
 	}
 
 	@Override
-	public void create(Product product) {
+	public Boolean create(Product product) {
 		// TODO Auto-generated method stub
-		productDao.create(product);
+		return productDao.create(product);
+
 	}
 
 	@Override
-	public void update(Product product) {
+	public Boolean update(Product product) {
 		// TODO Auto-generated method stub
-		productDao.update(product);
+		return productDao.update(product);
 	}
 
 	@Override
-	public void delete(int id) {
+	public Boolean delete(int id) {
 		// TODO Auto-generated method stub
-		productDao.delete(id);
+		return productDao.delete(id);
 	}
 
 	@Override
@@ -60,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Boolean associateMarchant(Product p, Marchant marchant) {
 		// TODO Auto-generated method stub
-		return productDao.associateMarchant(p,marchant);
+		return productDao.associateMarchant(p, marchant);
 	}
 
 }

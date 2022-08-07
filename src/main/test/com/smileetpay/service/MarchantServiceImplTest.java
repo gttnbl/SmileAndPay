@@ -1,15 +1,14 @@
 package com.smileetpay.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runner.Runner;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -18,7 +17,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.smileetpay.dao.MarchantDao;
 import com.smileetpay.model.Marchant;
-import com.smileetpay.model.Product;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MarchantServiceImplTest {
@@ -36,20 +34,7 @@ public class MarchantServiceImplTest {
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-//		pGet = new Product();
-//		pGet.setLabel("testGet");
-//		pGet.setCurrency("$");
-//		pGet.setUnit_price(10);
-//		pGet.setWeight(77);
-//		pGet.setHeight(33);
-//
-//		pGet1 = new Product();
-//		pGet1.setProduct_id(1);
-//		pGet1.setLabel("testGet1");
-//		pGet1.setCurrency("€");
-//		pGet1.setUnit_price(20);
-//		pGet1.setWeight(99);
-//		pGet1.setHeight(88);
+
 		mGet = new Marchant();
 		mGet.setMarchant_id(1);
 		mGet.setName("Toto");
@@ -62,10 +47,9 @@ public class MarchantServiceImplTest {
 		mListGetAll.add(mGet);
 		mListGetAll.add(mGet1);
 
-	
-		//mAssoc.setBirthdate(new Date("1980-11-11"));
+		// mAssoc.setBirthdate(new Date("1980-11-11"));
 	}
-	
+
 	@Test
 	public void testGetMarchantById() {
 		marchantServiceImp.getMarchantById(1);
@@ -73,33 +57,32 @@ public class MarchantServiceImplTest {
 		Marchant rst = marchantServiceImp.getMarchantById(1);
 		assertEquals(rst.getName(), mGet.getName());
 		assertEquals(rst.getLastname(), mGet.getLastname());
-		//assertEquals(rst.getBirthdate(), mAssoc.getBirthdate());
-		
-	}
-	
-	
-	
-	public void testCreate() {
-		marchantServiceImp.create(1);
-		//assertEquals(7, MagicBuilder.getLucky());
-	}
-	
-	
-	
-	
-	public void testUpate() {
-		marchantServiceImp.update(1);
-		//assertEquals(7, MagicBuilder.getLucky());
-	}
-	
-	
+		// assertEquals(rst.getBirthdate(), mAssoc.getBirthdate());
 
-	public void testDelete() {
-		marchantServiceImp.delete(1);
-		//assertEquals(7, MagicBuilder.getLucky());
 	}
-	
-	
+
+	@Test
+	public void testCreate() {
+		Mockito.when(marchantDao.create(Mockito.any(Marchant.class))).thenReturn(Boolean.TRUE);
+		Boolean rst = marchantServiceImp.create(mGet);
+		assertTrue(rst);
+	}
+
+	@Test
+	public void testUpate() {
+
+		Mockito.when(marchantDao.update(Mockito.any(Marchant.class))).thenReturn(Boolean.TRUE);
+		Boolean rst = marchantServiceImp.update(mGet);
+		assertTrue(rst);
+	}
+
+	@Test
+	public void testDelete() {
+		Mockito.when(marchantDao.deleteMarchant(Mockito.anyInt())).thenReturn(Boolean.TRUE);
+		Boolean rst = marchantServiceImp.delete(1);
+		assertTrue(rst);
+	}
+
 	@Test
 	public void testGetAllMarchants() {
 		marchantServiceImp.getAllMarchants();
@@ -108,11 +91,9 @@ public class MarchantServiceImplTest {
 		assertEquals(rst.get(0).getName(), mGet.getName());
 		assertEquals(rst.get(0).getLastname(), mGet.getLastname());
 
-
 		assertEquals(rst.get(1).getName(), mGet1.getName());
 		assertEquals(rst.get(1).getLastname(), mGet1.getLastname());
-	
-		
+
 	}
-	
+
 }

@@ -6,15 +6,13 @@ import com.smileetpay.model.Marchant;
 
 public interface MarchantService {
 
-
-
-	void update(Marchant marchant);
+	Boolean update(Marchant marchant);
 
 	public Marchant getMarchantById(int id);
 
-	void create(Marchant marchant);
+	Boolean create(Marchant marchant);
 
-	void delete(int id);
+	Boolean delete(int id);
 
 	List<Marchant> getAllMarchants();
 }

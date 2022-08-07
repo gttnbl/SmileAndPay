@@ -15,9 +15,9 @@ public class MarchantServiceImpl implements MarchantService {
 	private MarchantDao marchantDao;
 
 	@Override
-	public void update(Marchant marchant) {
+	public Boolean update(Marchant marchant) {
 		// TODO Auto-generated method stub
-		marchantDao.update(marchant);
+		return marchantDao.update(marchant);
 
 	}
 
@@ -28,15 +28,15 @@ public class MarchantServiceImpl implements MarchantService {
 	}
 
 	@Override
-	public void create(Marchant marchant) {
+	public Boolean create(Marchant marchant) {
 		// TODO Auto-generated method stub
-		marchantDao.create(marchant);
+		return marchantDao.create(marchant);
 	}
 
 	@Override
-	public void delete(int id) {
+	public Boolean delete(int id) {
 		// TODO Auto-generated method stub
-		marchantDao.deleteMarchant(id);
+		return marchantDao.deleteMarchant(id);
 	}
 
 	@Override

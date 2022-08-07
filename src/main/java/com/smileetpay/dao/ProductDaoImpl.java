@@ -58,11 +58,15 @@ public class ProductDaoImpl implements ProductDao {
 	public Boolean delete(int id) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		Product p = (Product) session.load(Product.class, new Integer(id));
-		if (null != p) {
+		Boolean rst = Boolean.TRUE;
+		Product p = (Product) session.get(Product.class, new Integer(id));
+		if (p == null) {
+			rst = Boolean.FALSE;
+
+		} else {
 			session.delete(p);
 		}
-		return Boolean.TRUE;
+		return rst;
 	}
 
 	@Override
