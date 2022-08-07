@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "d5340cbf-220c-4e93-a9d0-4f051bfe579e",
+		"name": "SmileAndPay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "AddProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"label\": \"t1\",\r\n    \"unit_price\": 7,\r\n    \"currency\": \"a1\",\r\n    \"weight\": 55,\r\n    \"height\": 77\r\n}"
+						},
+						"url": "http://localhost:8081/SmileAndPay/addProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\":2,\r\n    \"label\": \"t3\",\r\n    \"unit_price\": 7,\r\n    \"currency\": \"a33\",\r\n    \"weight\": 11,\r\n    \"height\": 22\r\n}"
+						},
+						"url": "http://localhost:8081/SmileAndPay/updateProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "a",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:8081/SmileAndPay/getAllProducts"
+					},
+					"response": []
+				},
+				{
+					"name": "GetProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "a",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:8081/SmileAndPay/getProduct/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "a",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:8081/SmileAndPay/deleteProduct/1"
+					},
+					"response": []
+				},
+				{
+					"name": "associateMarchant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": {\r\n        \"product_id\": 1\r\n    },\r\n    \"marchant\": {\r\n        \"marchant_id\": 1\r\n    }\r\n}"
+						},
+						"url": "http://localhost:8081/SmileAndPay/associateMarchant"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marchant",
+			"item": [
+				{
+					"name": "AddMarchant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Smile\",\r\n    \"lastname\": \"pay\",\r\n    \"birthdate\": \"1989-11-24\",\r\n    \"address\": [\r\n        {\r\n            \"number\": 2,\r\n            \"street\": \"JEAN JACQUES ROUSSEAU\",\r\n            \"zipCode\": \"95120\"\r\n        },\r\n         {\r\n            \"number\": 18,\r\n            \"street\": \"cite olympique\",\r\n            \"zipCode\": \"4100\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": "http://localhost:8081/SmileAndPay/addMarchant"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMarchant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"marchant_id\":1,\r\n    \"name\": \"Gt\",\r\n    \"lastname\": \"Nbl\",\r\n    \"address\": [\r\n        {\r\n            \"number\": 2,\r\n            \"street\": \"JEAN JACQUES ROUSSEAU\",\r\n            \"zipCode\": \"6000\"\r\n        }\r\n         \r\n    ]\r\n \r\n}"
+						},
+						"url": "http://localhost:8081/SmileAndPay/updateMarchant"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllMarchants",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "a",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:8081/SmileAndPay/getAllMarchants"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMarchant",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "a",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:8081/SmileAndPay/deleteMarchant/1"
+					},
+					"response": []
+				},
+				{
+					"name": "getMarchant",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "a",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:8081/SmileAndPay/getMarchant/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

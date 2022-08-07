@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -46,7 +48,8 @@ public class Product {
 	private long height;
 
 
-	@OneToMany(mappedBy = "product", cascade = { CascadeType.MERGE })
+	@OneToMany(mappedBy = "product", cascade = { CascadeType.MERGE ,CascadeType.REMOVE})
+	  
 	private Set<MarchantProduct> marchantProducts = new HashSet<MarchantProduct>();
 
 	public int getProduct_id() {
