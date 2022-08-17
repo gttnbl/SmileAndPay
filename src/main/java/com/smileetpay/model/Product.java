@@ -13,23 +13,28 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
 
 @Entity
 @Table(name = "PRODUCT")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Product {
 
 	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "ID")
+	@XmlTransient
 	private int product_id;
 
 	@Column(name = "CREATE_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
+	@XmlTransient
 	private Date creationDate = new Date();
 
 	@Column(name = "LABEL")
@@ -49,7 +54,7 @@ public class Product {
 
 
 	@OneToMany(mappedBy = "product", cascade = { CascadeType.MERGE ,CascadeType.REMOVE})
-	  
+	@XmlTransient
 	private Set<MarchantProduct> marchantProducts = new HashSet<MarchantProduct>();
 
 	public int getProduct_id() {

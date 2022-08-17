@@ -8,15 +8,17 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "MARCHANT")
-//@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Marchant implements Serializable {
 
 	/**
@@ -28,6 +30,7 @@ public class Marchant implements Serializable {
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "ID")
+	@XmlTransient
 	private int marchant_id;
 
 	@Column(name = "NAME")
@@ -44,12 +47,14 @@ public class Marchant implements Serializable {
 
 	@Column(name = "CREATION_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
+	@XmlTransient
 	// @XmlElement
 	private Date creationDate = new Date();
 
+	@XmlTransient
 	@OneToMany(mappedBy = "marchant", cascade = { CascadeType.MERGE })
 	private Set<MarchantProduct> marchantProducts = new HashSet<MarchantProduct>();
-
+	@XmlTransient
 	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Address> address;
 

@@ -49,7 +49,7 @@
 		</beans:property>
 	</beans:bean>
 
-	<context:component-scan base-package="com.smileetpay" />
+	 <context:component-scan base-package="com.smileetpay" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 

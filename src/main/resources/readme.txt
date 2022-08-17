@@ -1,5 +1,5 @@
 #################################################################### info projet ########################################
-tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour developper le SOAP(je partirai en vacances)
+tous les api sont developï¿½s en REST ,malheuresement j'ai pas eu le temps pour developper le SOAP(je partirai en vacances)
 
 ################################################### DATABASE ###################################################
 1) Dans spring-servlet.xml vous trouverez la config BD 
@@ -26,18 +26,24 @@ tous les api sont developés en REST ,malheuresement j'ai pas eu le temps pour de
     - /addProduct ajouter un nouveau Product
     - /deleteProduct : delete un Product s'il existe
     - /getAllProducts afficher la liste des Products
-    - /associateMarchant : affecter un product à un marchant
+    - /associateMarchant : affecter un product ï¿½ un marchant
 	
-	NB: pour la la delete j'ai mis  CascadeType.REMOVE que dans la coté de product,pas de coté marchant (c'est pas une faute ,just pour tester les deux scenarios :D ) 
-	  ==> si on fait deleteProduct à un product qui est attché à un marchant la suppression se fait correctement et il supprime l'association dans la table marchant_product
-	  ==> si on fait deleteMarchant à un marchant qui est attché à un product la suppression ne se fait pas car ce marchant est attaché à un product dans la table marchant_product
+	NB: pour la la delete j'ai mis  CascadeType.REMOVE que dans la cotï¿½ de product,pas de cotï¿½ marchant (c'est pas une faute ,just pour tester les deux scenarios :D ) 
+	  ==> si on fait deleteProduct ï¿½ un product qui est attchï¿½ ï¿½ un marchant la suppression se fait correctement et il supprime l'association dans la table marchant_product
+	  ==> si on fait deleteMarchant ï¿½ un marchant qui est attchï¿½ ï¿½ un product la suppression ne se fait pas car ce marchant est attachï¿½ ï¿½ un product dans la table marchant_product
 
 
 ########################################################### Test ####################################################
-des Unit tests sont implementés avec une couverture qui dépasse 90%
+des Unit tests sont implementï¿½s avec une couverture qui dï¿½passe 90%
 vous trouvez en PJ un projet postman avec les differents test des endpoints (src/main/resources)
 
+#####################################Partie SOAP##########################################
+Vous trouvrez la config des endpoints dans le fichier : /SmileAndPay/WebContent/WEB-INF/sun-jaxws.xml
+1) MarchantService: pour les WS Marchant : http://localhost:8081/SmileAndPay/services/MarchantService?wsdl
+2) ProductService:  pour les WS Product : http://localhost:8081/SmileAndPay/services/ProductService?wsdl
 
+
+Vous trouvez un projet SOAP-UI qui contient des tests sur les endpoints sous :/SmileAndPay/src/main/resources/
 #####################################github repository##########################################
 
 https://github.com/gttnbl/SmileAndPay.git

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:ws="http://jax-ws.java.net/spring/core"
+    xmlns:wss="http://jax-ws.java.net/spring/servlet"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://jax-ws.java.net/spring/core http://jax-ws.java.net/spring/core.xsd
+    http://jax-ws.java.net/spring/servlet http://jax-ws.java.net/spring/servlet.xsd">
+ 
+ 
+ 	
+
+
+ 
+    <!-- to activate annotations in beans already registered in the ApplicationContext -->
+    <context:annotation-config />
+
+ 
+ 
+ 	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/SandP" />
+		<property name="username" value="postgres" />
+		<property name="password" value="admin" />
+	</bean>
+ 
+ 	<bean id="hibernate4AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.smileetpay.model.Marchant</value>
+				<value>com.smileetpay.model.Product</value>
+				<value>com.smileetpay.model.Address</value>
+		<value>com.smileetpay.model.MarchantProduct</value>
+				
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+    <!-- scans packages to find and register beans within the application context -->
+    <context:component-scan base-package="com.smileetpay.*" />
+    	
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+ 
+</beans>

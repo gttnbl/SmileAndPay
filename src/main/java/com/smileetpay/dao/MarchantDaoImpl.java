@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.smileetpay.model.Marchant;
 
-@Repository
+@Repository("marchantDao")
 @Transactional
 public class MarchantDaoImpl implements MarchantDao {
 
