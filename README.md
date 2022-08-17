@@ -35,6 +35,12 @@
 	  ==> si on fait deleteProduct à un product qui est attché à un marchant la suppression se fait correctement et il supprime l'association dans la table marchant_product
 	  ==> si on fait deleteMarchant à un marchant qui est attché à un product la suppression ne se fait pas car ce marchant est attaché à un product dans la table marchant_product
 
+#####################################Partie SOAP##########################################
+Vous trouvrez la config des endpoints dans le fichier : /SmileAndPay/WebContent/WEB-INF/sun-jaxws.xml
+1) MarchantService: pour les WS Marchant : http://localhost:8081/SmileAndPay/services/MarchantService?wsdl
+2) ProductService:  pour les WS Product : http://localhost:8081/SmileAndPay/services/ProductService?wsdl
+Vous trouvez un projet SOAP-UI qui contient des tests sur les endpoints sous :/SmileAndPay/src/main/resources/
+
 
 ################################## Test ########################## <br/>
 des Unit tests sont implementés avec une couverture qui dépasse 90%
