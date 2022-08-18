@@ -54,7 +54,7 @@ public class Marchant implements Serializable {
 	@XmlTransient
 	@OneToMany(mappedBy = "marchant", cascade = { CascadeType.MERGE })
 	private Set<MarchantProduct> marchantProducts = new HashSet<MarchantProduct>();
-	@XmlTransient
+	
 	@OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Address> address;
 

@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ADDRESS")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Address  implements Serializable{
 
 	/**
@@ -29,6 +33,7 @@ public class Address  implements Serializable{
 	@GeneratedValue(generator = "generator")
 	@Column(name = "ID")
 	@JsonIgnore
+	@XmlTransient
 	private int id;
 
 	@Column(name = "NUMBER")
@@ -43,6 +48,7 @@ public class Address  implements Serializable{
 	 //@ManyToOne @JoinColumn(name="marchant_id", nullable=false)
 	  @ManyToOne(fetch=FetchType.LAZY)
 	  @JoinColumn(name="MARCHANT_ID")
+	  @XmlTransient
 	    private Marchant marchant;
 	
 

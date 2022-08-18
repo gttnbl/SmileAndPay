@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.smileetpay.model.Marchant;
 import com.smileetpay.model.MarchantProduct;
 import com.smileetpay.model.Product;
+import com.smileetpay.service.soap.dto.AssociateDto;
 
 @Repository
 @Transactional
@@ -90,13 +91,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public Boolean associateMarchant(Product p, Marchant m) {
 		// TODO Auto-generated method stub
-		// Session session = this.sessionFactory.getCurrentSession();
 		Boolean returnedValue;
 		Marchant marchant = marchantDao.getMarchantById(m.getMarchant_id());
-		// (Marchant) session.get(Marchant.class, new Integer(m.getMarchant_id()));
 		Product product = this.getProductById(p.getProduct_id());
-		// (Product) session.get(Product.class, new Integer(p.getProduct_id()));
-		// System.out.println(product);
+
 		if (marchant != null && product != null) {
 
 			Transaction tx = null;
@@ -108,6 +106,44 @@ public class ProductDaoImpl implements ProductDao {
 
 			marchantProduct.setRegisteredDate(new Date());
 			p.addMarchantProduct(marchantProduct);
+			tx = session.beginTransaction();
+
+			Query query = session.createSQLQuery(
+					"INSERT INTO marchant_product (MARCHANT_ID,PRODUCT_ID,REGISTERED_DATE) VALUES (:marchant,:product, :date);");
+			query.setParameter("marchant", marchant.getMarchant_id());
+			query.setParameter("product", product.getProduct_id());
+			query.setParameter("date", new Date());
+
+			int result = query.executeUpdate();
+			System.out.println(result);
+			tx.commit();
+			session.close();
+			returnedValue = Boolean.TRUE;
+		} else {
+			returnedValue = Boolean.FALSE;
+		}
+		return returnedValue;
+
+	}
+	
+	@Override
+	public Boolean associateMarchant(AssociateDto  a) {
+		// TODO Auto-generated method stub
+		Boolean returnedValue;
+		Marchant marchant = marchantDao.getMarchantById(a.getMarchant_id());
+		Product product = this.getProductById(a.getProduct_id());
+
+		if (marchant != null && product != null) {
+
+			Transaction tx = null;
+			Session session = this.sessionFactory.openSession();
+
+			MarchantProduct marchantProduct = new MarchantProduct();
+			marchantProduct.setMarchant(marchant);
+			marchantProduct.setProduct(product);
+
+			marchantProduct.setRegisteredDate(new Date());
+		//	p.addMarchantProduct(marchantProduct);
 			tx = session.beginTransaction();
 
 			Query query = session.createSQLQuery(

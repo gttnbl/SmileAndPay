@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.smileetpay.model.Marchant;
 import com.smileetpay.model.Product;
+import com.smileetpay.service.soap.dto.AssociateDto;
 
 public interface ProductDao {
 
@@ -18,4 +19,6 @@ public interface ProductDao {
 	List<Product> getAllProducts();
 
 	Boolean associateMarchant(Product p, Marchant marchant);
+	
+	Boolean associateMarchant(AssociateDto a);
 }
